@@ -18,10 +18,8 @@ int main ()
     stdio_init_all();
     sleep_ms(3000);
 
-    gpio_init_mask(input_mask);
+    
     gpio_init(PICO_DEFAULT_LED_PIN);
-
-    gpio_set_dir_in_masked(input_mask);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, true);
 
 
