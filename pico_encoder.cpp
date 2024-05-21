@@ -7,6 +7,10 @@ Rotary::Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_
     pin_ccw = pin_counterclockwise;
     long_press_threshold = long_press_ms * 1000;
 
+    uint32_t input_mask = (1 << pin_sw) | (1 << pin_cw) | (1 << pin_ccw);
+    gpio_init_mask(input_mask);
+    gpio_set_dir_in_masked(input_mask);
+
     gpio_pull_up(pin_sw);
     gpio_pull_up(pin_cw);
     gpio_pull_up(pin_ccw);
