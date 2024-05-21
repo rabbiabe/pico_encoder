@@ -33,6 +33,7 @@ class Rotary {
     int8_t read(); 
     ButtonState buttonPress(uint32_t event);
     void updateCallback(gpio_irq_callback_t callback);
+    uint32_t getPressTime_ms();
 
   private:
     uint8_t pin_sw, pin_cw, pin_ccw;
