@@ -86,7 +86,16 @@ int8_t Rotary::read()
 
 }
 
-void updateCallback(gpio_irq_callback_t callback)
+void Rotary::updateCallback(gpio_irq_callback_t callback)
 {
     gpio_set_irq_callback(callback);
+}
+
+uint32_t getPressTime_ms()
+{
+    if (press_time == 0) {
+       return 0;
+    else {
+       return ((time_us_32() - press_time) / 1000);
+    }
 }
