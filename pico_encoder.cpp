@@ -107,7 +107,7 @@ int8_t Rotary::read()
 
 }
 
-void Rotary::updateCallback(gpio_irq_callback_t callback)
+void inline Rotary::updateCallback(gpio_irq_callback_t callback)
 {
     gpio_set_irq_callback(callback);
 }

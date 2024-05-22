@@ -17,7 +17,7 @@ void encoderCallback(uint gpio, uint32_t event);
 
 const uint8_t   pinEncCW = 20,  // pin 26 
                 pinEncCCW = 21, // pin 27
-                pinEncSW = 22;  // pin 29
+                pinEncSW = 22;  // pin 29 ** 1uF capacitor from this pin to ground will debounce the switch
 
 int32_t counter;
 
