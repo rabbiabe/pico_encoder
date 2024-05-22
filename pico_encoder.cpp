@@ -9,12 +9,16 @@
 
 #include "pico_encoder.h"
 
-Rotary::Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, uint8_t pin_switch, uint32_t long_press_ms)
+Rotary::Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, int8_t pin_switch, uint32_t long_press_ms)
 {
     pin_sw = pin_switch;
     pin_cw = pin_clockwise;
     pin_ccw = pin_counterclockwise;
     long_press_threshold = long_press_ms * 1000;
+
+   gpio_init(pin_cw, false);
+   gpio_init(pin_ccw, false);
+
 
     uint32_t input_mask = (1 << pin_sw) | (1 << pin_cw) | (1 << pin_ccw);
     gpio_init_mask(input_mask);
