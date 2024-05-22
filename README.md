@@ -12,6 +12,7 @@ The constructor takes four or five arguments:
 - `pin_counterclockwise`: GPIO number of the pin connected to the encoder's counter-clockwise terminal. 
 - `pin_sw`: GPIO number of the pin connected to the encoder's switch terminal. If you have not connected a switch, passing a negative value will tell the constructor to skip initializing the switch. 
 - `long_press_ms`: Optional argument specifying the duration (expressed in ms) that should be considered a "long" hold of the button. defaults to 3,000 ms if not specified. 
+
 When called, the constructor initializes the pins, sets them as inputs with pull up, and attaches the GPIO interrupts to the specified callback function. 
 #### int8_t read(); 
 #### ButtonState buttonPress(uint32_t event);
