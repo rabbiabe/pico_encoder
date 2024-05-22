@@ -1,3 +1,12 @@
+/**************************************************
+ * Rotary Encoder Object for Raspberry Pi Pico
+ * by Abe Friedman | https://github.com/rabbiabe
+ * v1.09 2024-05-19
+ * 
+ * Incorporates code by Ralph S. Bacon 
+ * https://github.com/RalphBacon/226-Better-Rotary-Encoder---no-switch-bounce 
+ **************************************************/
+
 #include "pico_encoder.h"
 
 Rotary::Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, uint8_t pin_switch, uint32_t long_press_ms)
@@ -91,11 +100,11 @@ void Rotary::updateCallback(gpio_irq_callback_t callback)
     gpio_set_irq_callback(callback);
 }
 
-uint32_t getPressTime_ms()
+uint32_t Rotary::getPressTime_ms()
 {
     if (press_time == 0) {
        return 0;
-    else {
+    } else {
        return ((time_us_32() - press_time) / 1000);
     }
 }

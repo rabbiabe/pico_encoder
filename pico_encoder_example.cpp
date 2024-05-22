@@ -37,13 +37,11 @@ void encoderCallback(uint gpio, uint32_t event)
     {
         case pinEncCCW:
         case pinEncCW:
-            printf("{Encoder movement}\n\n");
+            //printf("{Encoder movement}\n\n");
             newVal = encoder.read();
-            if (newVal == 0) {
-                printf("     encoder.read() returned %d (invalid trigger), nothing to do\n", newVal);
-            } else {
+            if (newVal != 0) {
                 counter += newVal;
-                printf("Valid encoder movement, Counter = %d", counter);
+                printf("Valid encoder movement, Counter = %d\n", counter);
             }
             break;
 
