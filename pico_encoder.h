@@ -29,7 +29,7 @@ enum ButtonState {
 
 class Rotary {
   public: 
-    Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, uint8_t pin_switch, uint32_t long_press_ms = 3000);
+    Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, int8_t pin_switch, uint32_t long_press_ms = 3000);
     int8_t read(); 
     ButtonState buttonPress(uint32_t event);
     void updateCallback(gpio_irq_callback_t callback);
