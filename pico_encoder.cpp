@@ -16,27 +16,22 @@ Rotary::Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_
     pin_ccw = pin_counterclockwise;
     long_press_threshold = long_press_ms * 1000;
 
-   gpio_init(pin_cw);
-   gpio_init(pin_ccw);
-   gpio_set_dir(pin_cw, false);
-   gpio_set_dir(pin_ccw, false);
+    gpio_init(pin_cw);
+    gpio_init(pin_ccw);
+    gpio_set_dir(pin_cw, false);
+    gpio_set_dir(pin_ccw, false);
     gpio_pull_up(pin_cw);
     gpio_pull_up(pin_ccw);
 
-
-
-
-
-    gpio_set_irq_enabled_with_callback(pin_cw, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, callback);
-    
+    gpio_set_irq_enabled_with_callback(pin_cw, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, callback);    
     gpio_set_irq_enabled(pin_ccw, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true);
 
-if (pin_sw >= 0) {
-   gpio_init(pin_sw);
-   gpio_set_dir(pin_sw, false);
-   gpio_pull_up(pin_sw); 
-   gpio_set_irq_enabled(pin_sw, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true); 
-   }
+    if (pin_sw >= 0) {
+        gpio_init(pin_sw);
+        gpio_set_dir(pin_sw, false);
+        gpio_pull_up(pin_sw); 
+        gpio_set_irq_enabled(pin_sw, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true); 
+    }
 
    
 
