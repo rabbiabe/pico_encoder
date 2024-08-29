@@ -21,7 +21,7 @@
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
-enum ButtonState {
+enum button_state_t {
     BTN_DOWN,
     BTN_UP_SHORT,
     BTN_UP_LONG,
@@ -29,9 +29,9 @@ enum ButtonState {
 
 class Rotary {
   public: 
-    Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, int8_t pin_switch, uint32_t long_press_ms = 3000);
+    Rotary(gpio_irq_callback_t callback, uint8_t pin_clockwise, uint8_t pin_counterclockwise, int8_t pin_switch = -1, uint32_t long_press_ms = 3000);
     int8_t read(); 
-    ButtonState buttonPress(uint32_t event);
+    button_state_t buttonPress(uint32_t event);
     void inline updateCallback(gpio_irq_callback_t callback);
     uint32_t getPressTime_ms();
 
